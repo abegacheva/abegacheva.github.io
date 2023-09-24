@@ -111,7 +111,7 @@ form {
   order: -1;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .wrapper-table {
      overflow: visible;
      order: 0;
