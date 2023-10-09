@@ -12,10 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         calculateBtn.addEventListener("click", function () {
             const selectedProduct = productSelect.value;
             const quantity = parseInt(quantityInput.value);
-    
-            // Проверка на корректность ввода данных
             const validQuantity = /^[1-9]\d*$/.test(quantityInput.value);
-    
             if (!validQuantity) {
                 result.textContent = "Введите корректное количество товара (положительное целое число).";
             } else if (selectedProduct in prices) {
