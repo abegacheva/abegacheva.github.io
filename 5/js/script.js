@@ -3,14 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const quantityInput = document.getElementById("quantity");
     const calculateBtn = document.getElementById("calculate-btn");
     const result = document.getElementById("result");
-
-
     const prices = {
         product1: 10,
         product2: 20,
         product3: 30,
     };
-
     if(calculateBtn) {
         calculateBtn.addEventListener("click", function () {
             const selectedProduct = productSelect.value;
@@ -30,5 +27,4 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-
 });
