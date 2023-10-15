@@ -1,34 +1,47 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const productSelect = document.getElementById("product");
     const quantityInput = document.getElementById("quantity");
-    const calculateBtn = document.getElementById("calculate-btn");
-    const result = document.getElementById("result");
-
-
-    const prices = {
-        product1: 10,
-        product2: 20,
-        product3: 30,
-    };
-
-    if(calculateBtn) {
-        calculateBtn.addEventListener("click", function () {
-            const selectedProduct = productSelect.value;
-            const quantity = parseInt(quantityInput.value);
-    
-            // Проверка на корректность ввода данных
-            const validQuantity = /^[1-9]\d*$/.test(quantityInput.value);
-    
-            if (!validQuantity) {
-                result.textContent = "Введите корректное количество товара (положительное целое число).";
-            } else if (selectedProduct in prices) {
-                const price = prices[selectedProduct];
-                const totalCost = price * quantity;
-                result.textContent = `Стоимость заказа: $${totalCost}`;
-            } else {
-                result.textContent = "Выберите товар из списка.";
+    const serviceTypeRadios = document.querySelectorAll("input[name='serviceType']");
+    const optionsDiv = document.getElementById("options");
+    const optionSelect = document.getElementById("option");
+    const propertyCheckbox = document.getElementById("property");
+    const propertyDiv = document.getElementById("propertyDiv");
+    const totalPrice = document.getElementById("totalPrice");
+    optionsDiv.style.display = "none";
+    function calculateTotalPrice() {
+        const quantity = parseInt(quantityInput.value);
+        const selectedServiceType = document.querySelector("input[name='serviceType']:checked").value;
+        const optionPrice = parseFloat(optionSelect.value);
+        const propertyPrice = propertyCheckbox.checked ? parseFloat(propertyCheckbox.value) : 0;
+        const total = quantity * (parseInt(selectedServiceType) + optionPrice + propertyPrice);
+        totalPrice.textContent = `Итоговая стоимость: ${total} ₽`;
+    }
+    quantityInput.addEventListener("input", calculateTotalPrice);
+    for (const radio of serviceTypeRadios) {
+        radio.addEventListener("change", function () {
+            if (radio.value === "1") {
+                optionsDiv.style.display = "none";
+                propertyDiv.style.display = "none";
+                quantityInput.value = "1";
+                optionSelect.value = "0";
+                propertyCheckbox.checked = false;
+            } else if (radio.value === "2") {
+                optionsDiv.style.display = "block";
+                optionSelect.style.display = "block";
+                propertyDiv.style.display = "none";
+                propertyCheckbox.checked = false;
+                quantityInput.value = "1";
+            } else if (radio.value === "3") {
+                optionsDiv.style.display = "none";
+                optionSelect.style.display = "none";
+                propertyDiv.style.display = "block";
+                propertyCheckbox.checked = false;
+                optionSelect.value = "0";
+                quantityInput.value = "1";
             }
+            calculateTotalPrice();
         });
     }
-
+    optionSelect.addEventListener("change", calculateTotalPrice);
+    propertyCheckbox.addEventListener("change", calculateTotalPrice);
+    calculateTotalPrice();
 });
