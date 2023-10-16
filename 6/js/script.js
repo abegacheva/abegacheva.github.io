@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const propertyDiv = document.getElementById("propertyDiv");
     const totalPrice = document.getElementById("totalPrice");
     optionsDiv.style.display = "none";
-
     function calculateTotalPrice() {
         const quantity = parseInt(quantityInput.value);
         const selectedServiceType = document.querySelector("input[name='serviceType']:checked").value;
@@ -17,9 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const total = quantity * (parseInt(selectedServiceType) + optionPrice + propertyPrice);
         totalPrice.textContent = `Итоговая стоимость: ${total} ₽`;
     }
-
     quantityInput.addEventListener("input", calculateTotalPrice);
-
     for (const radio of serviceTypeRadios) {
         radio.addEventListener("change", function () {
             if (radio.value === "1") {
@@ -45,9 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
             calculateTotalPrice();
         });
     }
-
     optionSelect.addEventListener("change", calculateTotalPrice);
     propertyCheckbox.addEventListener("change", calculateTotalPrice);
-
     calculateTotalPrice();
 });
