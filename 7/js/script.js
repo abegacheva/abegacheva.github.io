@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
       el: ".swiper-pagination",
     },
     slidesPerView: 1,
-    spaceBetween: 10,
+    spaceBetween: 50,
 
     navigation: {
       nextEl: ".swiper-button-next",
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     breakpoints: {
       768: {
         slidesPerView: 2,
-        spaceBetween: 10,
+        spaceBetween: 30,
       },
       1200: {
         slidesPerView: 3,
