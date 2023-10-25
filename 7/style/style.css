@@ -116,12 +116,12 @@ p {
 div.swiper-button-prev, div.swiper-button-next {
   color: rgba(113, 187, 91, 0.832);;
 }
-.cat{
+.cat {
   width: 100px;
   height: 100px;
 }
 
-
-
-
-
+.swiper-slide img {
+  width: 100%;
+  height: 222px;
+}
