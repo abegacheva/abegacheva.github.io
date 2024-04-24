@@ -4,9 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+    header {
+        text-align: center;
+        background-color: #333; /* Цвет фона */
+        color: white; /* Цвет текста */
+        padding: 20px; /* Поля вокруг содержимого */
+    }
     .container {
         text-align: center;
-        margin-top: 100px;
+        margin-top: 50px; /* Уменьшаем отступ от верха для контейнера */
     }
     button {
         padding: 10px 20px;
@@ -56,6 +62,10 @@
 </head>
 <body>
 
+<header>
+    <img src="https://tenor.com/ru/view/plink-cat-plink-cat-gif-1794292671885121408" alt="Your GIF" width="200"> <!-- Замените "your-gif-url.gif" на URL вашей гифки -->
+</header>
+
 <div class="container">
     <h1>Нажмите на кнопку, чтобы получить ответ</h1>
     <button id="generateButton">Получить ответ</button>
@@ -74,12 +84,11 @@
     function generateAnswer() {
         // Массив с вариантами ответов
         var answers = [
-            "Да",
-            "Нет",
-            "Возможно",
-            "Попробуй еще раз",
-            "Не уверен",
-            "Спроси позже"
+            "Обнимашки",
+            "Поцелуй в щёку",
+            "Совместная фоточка",
+            "Поиграть на гитаре",
+            "Пойти в кино"
         ];
 
         // Генерация случайного числа от 0 до длины массива с ответами
@@ -89,7 +98,7 @@
         var randomAnswer = answers[randomIndex];
         
         // Вывод ответа в модальное окно
-        document.getElementById("modalAnswer").innerText = "Ответ: " + randomAnswer;
+        document.getElementById("modalAnswer").innerText = "Желание таково: " + randomAnswer;
 
         // Показать модальное окно
         modal.style.display = "block";
