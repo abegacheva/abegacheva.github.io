@@ -98,19 +98,22 @@
     // Назначение функции generateAnswer() на событие клика по кнопке
     document.getElementById("generateButton").addEventListener("click", generateAnswer);
 
-    // Получаем модальное окно по ID
-    var modal = document.getElementById("myModal");
+    // Функция, которая будет вызываться после загрузки всего документа
+    document.addEventListener("DOMContentLoaded", function() {
+        // Получаем модальное окно по ID
+        var modal = document.getElementById("myModal");
 
-    // Закрыть модальное окно при нажатии на крестик
-    document.getElementsByClassName("close")[0].addEventListener("click", function() {
-        modal.style.display = "none";
-    });
-
-    // Закрыть модальное окно при клике вне окна
-    window.addEventListener("click", function(event) {
-        if (event.target == modal) {
+        // Закрыть модальное окно при нажатии на крестик
+        document.getElementsByClassName("close")[0].addEventListener("click", function() {
             modal.style.display = "none";
-        }
+        });
+
+        // Закрыть модальное окно при клике вне окна
+        window.addEventListener("click", function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
     });
 </script>
 
