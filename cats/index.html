@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Попап с случайной картинкой</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Нажмите на кнопку</h1>
+        <button id="popupButton">тык</button>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <img id="randomImage" src="" alt="Random Image">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+    background-color: #ffd1f5;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+button {
+    background-color: #ff91e7;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.popup.show {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    transform: scale(0.7);
+    transition: transform 0.5s;
+}
+
+.popup-content.show {
+    background-color: pink;
+    transform: scale(1);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const popupButton = document.getElementById('popupButton');
+    const popup = document.getElementById('popup');
+    const close = document.getElementsByClassName('close')[0];
+    const randomImage = document.getElementById('randomImage');
+    const images = [
+        'cats/img/1637937702_1-koshka-top-p-kot-s-glazami-na-ushakh-1.jpg',
+        'cats/img/sebLkSkfNMg.jpg',
+        'cats/img/1686995716_bogatyr-club-p-naglaya-morda-kota-foni-krasivo-52.jpg'
+    ];
+
+    popupButton.addEventListener('click', () => {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        randomImage.src = images[randomIndex];
+        popup.classList.add('show');
+        document.querySelector('.popup-content').classList.add('show');
+    });
+
+    close.addEventListener('click', () => {
+        popup.classList.remove('show');
+        document.querySelector('.popup-content').classList.remove('show');
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target == popup) {
+            popup.classList.remove('show');
+            document.querySelector('.popup-content').classList.remove('show');
+        }
+    });
+});
+</script>
